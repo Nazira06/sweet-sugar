@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Service, Master, Certificates, Feedback
+from .models import Service, Master, Certificates, Feedback, Spot
 
 
 
@@ -33,12 +33,21 @@ class MasterCertificateList(serializers.ModelSerializer):
         fields = ['id', 'name']
 
 
+class SpotSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Spot
+        fields = ['id', 'name', 'date', 'time', 'master']
+
 class MasterSerializers(serializers.ModelSerializer):
     certificate = MasterCertificateList(many=True)
+    spots = SpotSerializers(many=True)
     service = ServiceList(many=True)
     class Meta:
         model = Master
-        fields = ['id', 'image', 'name', 'exp', 'certificate', 'service']
+        fields = ['id', 'image', 'name', 'exp', 'certificate', 'service','spots']
+
+
+
 
 
 
