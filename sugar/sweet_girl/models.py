@@ -42,4 +42,10 @@ class Feedback(models.Model):
     text = models.TextField()
     master = models.ForeignKey('Master', on_delete=models.SET_NULL, null=True)
 
+class Spot(models.Model):
+    name = models.CharField(max_length=50)
+    date = models.DateTimeField(auto_now_add=True)
+    time = models.DateTimeField(auto_created=True)
+    master = models.ForeignKey('Master', on_delete=models.SET_NULL, null=True, related_name='spots')
+
 
