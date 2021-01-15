@@ -24,3 +24,8 @@ class CertificatesViewSet(viewsets.ModelViewSet):
 class FeedbackViewSet(viewsets.ModelViewSet):
     queryset = Feedback.objects.all()
     serializer_class = FeedbackSerializers
+
+
+class SpotViewSet(viewsets.ModelViewSet):
+    queryset = Spot.objects.all()
+    serializer_class = SpotSerializers
